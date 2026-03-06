@@ -162,28 +162,34 @@ All config values serve as global defaults. You can override them per field (see
 
 ## Field Options
 
-Chain methods on the `Sortable` field to override config defaults per resource:
+You can override config defaults per resource by chaining methods on the `Sortable` field:
+
+| Method | Description |
+|---|---|
+| `showDragHandle()` / `hideDragHandle()` | Toggle drag handle visibility |
+| `showSortArrows()` / `hideSortArrows()` | Toggle arrow buttons |
+| `showOrderNumber()` / `hideOrderNumber()` | Toggle order number display |
+| `showToast()` / `hideToast()` | Toggle success/error toast messages |
+
+### Auto-assign order on create
+
+By default, the package automatically assigns the next order value (`max + 1`) when creating a new model. This means every new entry is added to the end of the list.
+
+If you want to control the order value manually (e.g. via a form field), you can disable this:
 
 ```php
 Sortable::make('Order', 'sort_order')
-    ->hideDragHandle()       // Hide the drag handle
-    ->hideSortArrows()       // Hide up/down arrow buttons
-    ->hideOrderNumber()      // Hide the order number display
-    ->hideToast()            // Disable toast notifications
-    ->orderColumn('position') // Use a different column
-    ->autoAssignOnCreate(false) // Disable auto-assigning order on create
+    ->autoAssignOnCreate(false)
 ```
 
-Each `hide*()` method has a corresponding `show*()` method:
+With auto-assign disabled, you are responsible for setting the `sort_order` value yourself:
 
-| Method                                    | Description                            |
-| ----------------------------------------- | -------------------------------------- |
-| `showDragHandle()` / `hideDragHandle()`   | Toggle drag handle visibility          |
-| `showSortArrows()` / `hideSortArrows()`   | Toggle arrow buttons                   |
-| `showOrderNumber()` / `hideOrderNumber()` | Toggle order number display            |
-| `showToast()` / `hideToast()`             | Toggle success/error toast messages    |
-| `orderColumn(string)`                     | Set the database column                |
-| `autoAssignOnCreate(bool)`                | Auto-assign next order value on create |
+```php
+Service::create([
+    'name' => 'My Service',
+    'sort_order' => 5, // must be set manually
+]);
+```
 
 ## How it works
 
