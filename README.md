@@ -16,9 +16,9 @@ A Laravel Nova 5 package for drag-and-drop and arrow-based sorting of resources.
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Setup](#setup)
-  - [1. Add a sort column to your table](#1-add-a-sort-column-to-your-table)
-  - [2. Add the trait to your Eloquent Model](#2-add-the-trait-to-your-eloquent-model)
-  - [3. Add the trait and field to your Nova Resource](#3-add-the-trait-and-field-to-your-nova-resource)
+- [1. Add a sort column to your table](#1-add-a-sort-column-to-your-table)
+- [2. Add the trait to your Eloquent Model](#2-add-the-trait-to-your-eloquent-model)
+- [3. Add the trait and field to your Nova Resource](#3-add-the-trait-and-field-to-your-nova-resource)
 - [Configuration](#configuration)
 - [Field Options](#field-options)
 - [How it works](#how-it-works)
@@ -71,6 +71,12 @@ php artisan make:migration add_sort_order_to_services_table
 Schema::table('services', function (Blueprint $table) {
     $table->unsignedInteger('sort_order')->default(0)->after('id');
 });
+```
+
+Then run the migration:
+
+```bash
+php artisan migrate
 ```
 
 After migrating, you can initialize the order values for existing rows:
@@ -170,14 +176,14 @@ Sortable::make('Order', 'sort_order')
 
 Each `hide*()` method has a corresponding `show*()` method:
 
-| Method | Description |
-|---|---|
-| `showDragHandle()` / `hideDragHandle()` | Toggle drag handle visibility |
-| `showSortArrows()` / `hideSortArrows()` | Toggle arrow buttons |
-| `showOrderNumber()` / `hideOrderNumber()` | Toggle order number display |
-| `showToast()` / `hideToast()` | Toggle success/error toast messages |
-| `orderColumn(string)` | Set the database column |
-| `autoAssignOnCreate(bool)` | Auto-assign next order value on create |
+| Method                                    | Description                            |
+| ----------------------------------------- | -------------------------------------- |
+| `showDragHandle()` / `hideDragHandle()`   | Toggle drag handle visibility          |
+| `showSortArrows()` / `hideSortArrows()`   | Toggle arrow buttons                   |
+| `showOrderNumber()` / `hideOrderNumber()` | Toggle order number display            |
+| `showToast()` / `hideToast()`             | Toggle success/error toast messages    |
+| `orderColumn(string)`                     | Set the database column                |
+| `autoAssignOnCreate(bool)`                | Auto-assign next order value on create |
 
 ## How it works
 
