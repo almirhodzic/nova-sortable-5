@@ -16,9 +16,9 @@ A Laravel Nova 5 package for drag-and-drop and arrow-based sorting of resources.
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Setup](#setup)
-- [1. Add a sort column to your table](#1-add-a-sort-column-to-your-table)
-- [2. Add the trait to your Eloquent Model](#2-add-the-trait-to-your-eloquent-model)
-- [3. Add the trait and field to your Nova Resource](#3-add-the-trait-and-field-to-your-nova-resource)
+    - [1. Add a sort column to your table](#1-add-a-sort-column-to-your-table)
+    - [2. Add the trait to your Eloquent Model](#2-add-the-trait-to-your-eloquent-model)
+    - [3. Add the trait and field to your Nova Resource](#3-add-the-trait-and-field-to-your-nova-resource)
 - [Configuration](#configuration)
 - [Field Options](#field-options)
 - [How it works](#how-it-works)
@@ -164,12 +164,12 @@ All config values serve as global defaults. You can override them per field (see
 
 You can override config defaults per resource by chaining methods on the `Sortable` field:
 
-| Method | Description |
-|---|---|
-| `showDragHandle()` / `hideDragHandle()` | Toggle drag handle visibility |
-| `showSortArrows()` / `hideSortArrows()` | Toggle arrow buttons |
-| `showOrderNumber()` / `hideOrderNumber()` | Toggle order number display |
-| `showToast()` / `hideToast()` | Toggle success/error toast messages |
+| Method                                    | Description                         |
+| ----------------------------------------- | ----------------------------------- |
+| `showDragHandle()` / `hideDragHandle()`   | Toggle drag handle visibility       |
+| `showSortArrows()` / `hideSortArrows()`   | Toggle arrow buttons                |
+| `showOrderNumber()` / `hideOrderNumber()` | Toggle order number display         |
+| `showToast()` / `hideToast()`             | Toggle success/error toast messages |
 
 ### Auto-assign order on create
 
