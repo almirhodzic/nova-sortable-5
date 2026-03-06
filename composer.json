@@ -1,0 +1,51 @@
+{
+    "name": "almirhodzic/nova-sortable-5",
+    "description": "A Laravel Nova 5 package for drag-and-drop sorting of resources with an orderable field.",
+    "type": "library",
+    "keywords": [
+        "laravel",
+        "nova",
+        "sortable",
+        "drag-and-drop",
+        "reorder",
+        "order",
+        "field"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Almir Hodzic",
+            "email": "hello@frontbyte.ch",
+            "homepage": "https://frontbyte.ch"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/almirhodzic/nova-sortable-5/issues",
+        "source": "https://github.com/almirhodzic/nova-sortable-5"
+    },
+    "homepage": "https://novafront.dev",
+    "version": "1.0.0",
+    "require": {
+        "php": "^8.2"
+    },
+    "require-dev": {
+        "laravel/nova": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "AlmirHodzic\\NovaSortable5\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AlmirHodzic\\NovaSortable5\\SortableServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
