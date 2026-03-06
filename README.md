@@ -1,5 +1,7 @@
 # Nova Sortable 5
 
+![Nova Sortable 5](https://novafront.dev/images/sortable/sortable-screenshot.jpg)
+
 A Laravel Nova 5 package for drag-and-drop and arrow-based sorting of resources.
 
 - Drag-and-drop reordering via [SortableJS](https://sortablejs.github.io/Sortable/)
