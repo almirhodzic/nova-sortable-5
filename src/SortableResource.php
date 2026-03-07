@@ -9,6 +9,7 @@
 
 namespace AlmirHodzic\NovaSortable5;
 
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 /**
@@ -18,7 +19,7 @@ use Laravel\Nova\Http\Requests\NovaRequest;
  */
 trait SortableResource
 {
-    public static function indexQuery(NovaRequest $request, $query)
+    public static function indexQuery(NovaRequest $request, Builder $query): Builder
     {
         $model = $query->getModel();
 
