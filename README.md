@@ -129,6 +129,8 @@ class Service extends Resource
 
 The `SortableResource` trait ensures Nova sorts by your sortable column by default, preventing conflicts with drag-and-drop.
 
+> **Tip:** If you're adding this package to an existing resource with pre-existing rows, their `sort_order` values will initially all be `0`. Simply perform a single drag-and-drop reorder in the admin panel — the package will automatically recalculate and persist the `sort_order` for all rows in the table.
+
 ## Configuration
 
 After publishing, edit `config/frontbyte-nova-sortable.php`:
