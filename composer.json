@@ -24,7 +24,6 @@
         "source": "https://github.com/almirhodzic/nova-sortable-5"
     },
     "homepage": "https://novafront.dev",
-    "version": "1.0.0",
     "require": {
         "php": "^8.2"
     },
