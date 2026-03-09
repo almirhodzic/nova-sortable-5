@@ -28,50 +28,27 @@
     </DefaultField>
 </template>
 
-<script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+<script>
+import DependentFormField from '@/mixins/DependentFormField';
+import HandlesValidationErrors from '@/mixins/HandlesValidationErrors';
 
-interface Props {
-    resourceName?: string;
-    resourceId?: string | number;
-    field: Record<string, any>;
-    errors?: Record<string, any>;
-    showHelpText?: boolean;
-    fullWidthContent?: boolean;
-}
+export default {
+    mixins: [DependentFormField, HandlesValidationErrors],
 
-const props = defineProps<Props>();
+    methods: {
+        setInitialValue() {
+            this.value = this.currentField.value ?? null;
+        },
 
-declare const Nova: any;
+        fill(formData) {
+            if (this.value !== null) {
+                formData.append(this.currentField.attribute, String(this.value));
+            }
+        },
 
-const currentField = computed(() => props.field);
-const value = ref<number | null>(null);
-
-const errorClasses = computed(() => {
-    if (props.errors?.[currentField.value.attribute]) {
-        return ['form-input-border-error'];
-    }
-    return [];
-});
-
-const handleInput = (e: Event) => {
-    const target = e.target as HTMLInputElement;
-    value.value = target.value ? parseInt(target.value, 10) : null;
+        handleInput(e) {
+            this.value = e.target.value ? parseInt(e.target.value, 10) : null;
+        },
+    },
 };
-
-const setInitialValue = () => {
-    value.value = currentField.value.value ?? null;
-};
-
-const fill = (formData: FormData) => {
-    if (value.value !== null) {
-        formData.append(currentField.value.attribute, String(value.value));
-    }
-};
-
-onMounted(() => {
-    setInitialValue();
-});
-
-defineExpose({ fill });
 </script>
