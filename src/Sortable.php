@@ -34,6 +34,9 @@ class Sortable extends Field
 
         parent::__construct($name, $attribute ?? $defaultColumn, $resolveCallback);
 
+        $this->hideWhenCreating();
+        $this->hideWhenUpdating();
+
         $this->orderColumn = $attribute ?? $defaultColumn;
         $this->showDragHandle = config('frontbyte-nova-sortable.show_drag_handle', true);
         $this->showSortArrows = config('frontbyte-nova-sortable.show_order_arrows', true);
